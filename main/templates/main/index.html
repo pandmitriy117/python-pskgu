@@ -1,0 +1,23 @@
+{% extends "main/base-layout.html" %}
+{% block content %}
+    <div class="container">
+        <h1 class="mb-5">Home</h1>
+        {% if posts|length > 0 %}
+        <div class="row gy-4 flex-column align-items-center">
+            {% for item in posts %}
+                <div class="col col-6">
+                    <div class="card">
+                        <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.title }}">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ item.title }}</h5>
+                          <p class="card-text">{{ item.body }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        Posts not found
+        {% endif %}
+    </div>
+{% endblock %}

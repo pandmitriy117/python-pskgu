@@ -1,0 +1,21 @@
+{% extends "main/base-layout.html" %}
+{% block content %}
+    <div class="container">
+        <h1 class="mb-5">Contacts</h1>
+        {% if contacts|length > 0 %}
+        <div class="row flex-column">
+            {% for item in contacts %}
+                <div class="py-2">
+                    <h3>
+                        {{ item.name }}
+                    </h3>
+                    <a href="tel:{{ item.value }}">{{ item.value }}</a>
+                </div>
+                <hr class="m-0">
+            {% endfor %}
+        </div>
+        {% else %}
+        Contacts not found
+        {% endif %}
+    </div>
+{% endblock %}

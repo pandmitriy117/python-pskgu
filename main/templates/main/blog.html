@@ -1,0 +1,33 @@
+{% extends "main/base-layout.html" %}
+{% block content %}
+    <div class="container">
+        <h1 class="mb-5">Blog</h1>
+        {% if posts|length > 0 %}
+        <div class="row gy-4">
+            {% for item in posts %}
+                <div class="col col-3">
+                    <div class="card h-100">
+                        <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.title }}">
+                        <div class="px-3 pt-2">
+                            <div class="row gx-3 align-items-center">
+                                <div class="col-auto">
+                                    <img src="{{ item.avatar }}" alt="{{ item.author_name }}" style="width: 50px; height: 50px; border-radius: 50%;">
+                                </div>
+                                <div class="col">
+                                    <span class="text-secondary" style="font-size: 12px">{{ item.author_name }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                          <h5 class="card-title">{{ item.title }}</h5>
+                          <p class="card-text">{{ item.body }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        Posts not found
+        {% endif %}
+    </div>
+{% endblock %}
